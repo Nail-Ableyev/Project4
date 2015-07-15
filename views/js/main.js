@@ -527,12 +527,14 @@ document.addEventListener('DOMContentLoaded', function() {
   for (var i = 0; i < 24; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
-    elem.src = "images/pizza.png";
-    elem.style.height = "100px";
-    elem.style.width = "73.333px";
+    //MECHANGE: changed image to a smaller one(73x100px) and
+    //changed css property width of the class mover 
+    elem.src = "images/sm-pizza.png";
+    //MECHANGE: Removed elem.style.height and elem.style.width
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    //MECHANGE: changed querySelector to getElementById
+    document.getElementById("movingPizzas1").appendChild(elem);
   }
   updatePositions();
 });
