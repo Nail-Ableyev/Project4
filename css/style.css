@@ -8,7 +8,7 @@ html {
   -webkit-text-size-adjust: none;
 }
 
-/* @font-face is used to download fonts*/
+/* MECHANGE: @font-face is used to download fonts*/
 @font-face {
   font-family: 'Open Sans';
   font-style: normal;
@@ -40,7 +40,7 @@ img { border: 0; max-width: 100%; }
 
 body { background: #fff; }
 
-/* will-change is used to as we expect scrolling from the user*/
+/* will-change is used as we expect scrolling from the user*/
 header, footer, .container { will-change: scroll-position; max-width: 45em; margin: 0 auto; }
 
 header { padding: 0 0.5em; color: #C90B0B; }
