@@ -44,6 +44,8 @@ index.html:
 
 	4. file was minified (see production version);
 
+  5. images ('pizzeria.jpg' and 'profilepic.jpg') were compressed
+
 style.css:
 
 	1. @font-face was used to download fonts (line: 11);
@@ -54,15 +56,17 @@ style.css:
 
 main.js (views/js/):
 
-	1. numbers were changed to represent percentage in sizeSwitcher function (line: 426);
+	1. numbers were changed to represent percentage in sizeSwitcher function (line: 425);
 
-	2.  in the updatePosition function getElementsByClassName() was used instead of querrySelectorAll() (line: 494) and querySelector was changed to getElementById in the EventListener (line: 537);
+	2.  in the updatePosition function getElementsByClassName() was used instead of querrySelectorAll() (line: 499) and querySelector was changed to getElementById in the EventListener (line: 533);
 
-	3. dx variable was removed and overall for-loop was simplified (line: 443-445);
+	3. dx variable was removed and overall for-loop was simplified (line: 442-448);
 
-	4. function updatePosition() was refactored. document.body.scrollTop computation was pulled out of the for-loop. TranslateX() was used for better perfomance(line: 506);
+	4. function updatePosition() was refactored. document.body.scrollTop computation was pulled out of the for-loop. TranslateX() was used for better perfomance(line: 509);
 
-	5. Number of floating pizzas was reduced from 200 to 24. Smaller image(sm-pizza.png) was used, this image has desirable dimensions so .width and .height attributes were removed. (line:528);
+	5. variable numberOfFloatingPizzas was introduced to calculate optimal number of floating pizzas. Smaller image(sm-pizza.png) was used, this image has desirable dimensions so .width and .height attributes were removed. (line:541);
+
+  6. several variables were declared prior to the loop: pizzasDiv(line: 462), elem(line: 533); pizzaRandomLength(line: 445);
 
 style.css (views/css/):
 

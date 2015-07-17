@@ -440,6 +440,8 @@ var resizePizzas = function(size) {
   // Iterates through pizza elements on the page and changes their widths
 //MECHANGE: removed dx variables and simplified for-loop
     var pizzaRandom = document.getElementsByClassName("randomPizzaContainer");
+//MECHANGE2: stored the length of the pizzaRandom
+// to ease calculation in the loop
     var pizzaRandomLength = pizzaRandom.length;
     for (var i = 0; i < pizzaRandomLength; i++) {
       pizzaRandom[i].style.width = newWidth + "%";
@@ -529,6 +531,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // was developed experimentally
   var numberOfFloatingPizzas = (windowWidth+windowHeight)/60;
   var movingPizzas =document.getElementById("movingPizzas1");
+  //MECHANGE2: declared variable elem prior to the loop
   var elem;
   for (var i = 0; i < numberOfFloatingPizzas; i++) {
     elem = document.createElement('img');
