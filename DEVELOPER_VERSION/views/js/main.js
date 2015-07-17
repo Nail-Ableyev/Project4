@@ -5,7 +5,6 @@ jank-free at 60 frames per second.
 There are two major issues in this code that lead to sub-60fps performance. Can
 you spot and fix both?
 
-
 Built into the code, you'll find a few instances of the User Timing API
 (window.performance), which will be console.log()ing frame rate data into the
 browser console. To learn more about User Timing API, check out:
@@ -15,7 +14,6 @@ Creator:
 Cameron Pittman, Udacity Course Developer
 cameron *at* udacity *dot* com
 */
-
 // As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
 var pizzaIngredients = {};
@@ -423,6 +421,7 @@ var resizePizzas = function(size) {
 
     // Changes the slider value to a percent width
     //MECHANGE:changed to larger numbers in order to present percentage
+    var newWidth;
     function sizeSwitcher (size) {
       switch(size) {
         case "1":
@@ -441,7 +440,8 @@ var resizePizzas = function(size) {
   // Iterates through pizza elements on the page and changes their widths
 //MECHANGE: removed dx variables and simplified for-loop
     var pizzaRandom = document.getElementsByClassName("randomPizzaContainer");
-    for (var i = 0; i < pizzaRandom.length; i++) {
+    var pizzaRandomLength = pizzaRandom.length;
+    for (var i = 0; i < pizzaRandomLength; i++) {
       pizzaRandom[i].style.width = newWidth + "%";
     }
 }
@@ -458,8 +458,9 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
+//MECHANGE2: pulled pizzasDiv variable out of the loop
+var pizzasDiv = document.getElementById("randomPizzas");
 for (var i = 2; i < 100; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -485,7 +486,9 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 
 // The following code for sliding background pizzas was pulled from Ilya's demo found at:
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
-
+//MECHANGE: created variables and stored the width and height of current viewport
+var windowWidth = window.innerWidth;
+var windowHeight = window.innerHeight;
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
   frame++;
@@ -494,8 +497,6 @@ function updatePositions() {
   var items = document.getElementsByClassName('mover');
 //MECHANGE: created new variable scrollPizza to lighten for-loop
   var scrollPizza = document.body.scrollTop / 1250;
-//MECHANGE: created variable and stored the width of current viewport
-  var windowWidth = window.innerWidth;
   for (var i = 0; i < items.length; i++) {
     var phase = Math.sin(scrollPizza + (i % 5));
     var pizzaPosition = items[i].basicLeft + 100 * phase;
@@ -523,9 +524,14 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  //MECHANGE: reduce number of floating pizzas from 200 to 24
-  for (var i = 0; i < 24; i++) {
-    var elem = document.createElement('img');
+  //MECHANGE2: created variable that calculates sufficient number of
+  //floating pizzas depending on the screen resolution. The formula
+  // was developed experimentally
+  var numberOfFloatingPizzas = (windowWidth+windowHeight)/60;
+  var movingPizzas =document.getElementById("movingPizzas1");
+  var elem;
+  for (var i = 0; i < numberOfFloatingPizzas; i++) {
+    elem = document.createElement('img');
     elem.className = 'mover';
     //MECHANGE: changed image to a smaller one(73x100px) and
     //changed css property width of the class mover 
@@ -534,7 +540,7 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     //MECHANGE: changed querySelector to getElementById
-    document.getElementById("movingPizzas1").appendChild(elem);
+    movingPizzas.appendChild(elem);
   }
   updatePositions();
 });
