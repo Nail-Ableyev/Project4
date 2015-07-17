@@ -44,7 +44,8 @@ index.html:
 
 	4. file was minified (see production version);
 
-  5. images ('pizzeria.jpg' and 'profilepic.jpg') were compressed
+  5. images ('pizzeria.jpg' and 'profilepic.jpg') were compressed;
+
 
 style.css:
 
@@ -67,6 +68,7 @@ main.js (views/js/):
 	5. variable numberOfFloatingPizzas was introduced to calculate optimal number of floating pizzas. Smaller image(sm-pizza.png) was used, this image has desirable dimensions so .width and .height attributes were removed. (line:541);
 
   6. several variables were declared prior to the loop: pizzasDiv(line: 462), elem(line: 533); pizzaRandomLength(line: 445);
+  
 
 style.css (views/css/):
 
