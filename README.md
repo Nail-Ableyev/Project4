@@ -40,11 +40,13 @@ index.html:
 
 	2. analytics.js was made async (line: 24);
 
-	3. css file was made internal (see production version);
+	3. css file was made internal (in developer and production versions);
 
 	4. file was minified (see production version);
 
   5. images ('pizzeria.jpg' and 'profilepic.jpg') were compressed;
+
+  6. googleAnalytics script was moved to the bottom; 
 
 
 style.css:
